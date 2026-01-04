@@ -16,76 +16,65 @@ type Certification = {
 const certifications: Certification[] = [
   {
     id: '1',
-    title: 'Oracle Certified Professional, Java SE Developer',
+    title: 'Oracle Certified Professional, Java SE 6 Programmer',
     issuer: 'Oracle',
-    issue_date: '2020-06-15',
+    issue_date: '2018-04-09',
     expiry_date: null,
-    credential_id: 'OCP-12345',
-    credential_url: 'https://catalog.oracle.com/verify',
-    image_url: 'https://images.pexels.com/photos/6224/hands-people-woman-working.jpg?auto=compress&cs=tinysrgb&w=400',
+    credential_id: '1Z0-851',
+    credential_url: 'https://www.youracclaim.com/badges/90c5100b-d459-4875-8240-fa5c1f243bc2',
+    image_url: '/certificates/ORACLE.png',
     order_index: 1,
     created_at: '',
   },
   {
     id: '2',
-    title: 'Spring Professional Certification',
-    issuer: 'VMware/Pivotal',
-    issue_date: '2021-03-20',
+    title: 'Certificate for Best Performance',
+    issuer: 'IDB-BISEW',
+    issue_date: '2018-04-22',
     expiry_date: null,
-    credential_id: 'SPRING-67890',
-    credential_url: 'https://spring.io/certifications',
-    image_url: 'https://images.pexels.com/photos/159844/cellular-education-classroom-159844.jpeg?auto=compress&cs=tinysrgb&w=400',
+    credential_id: '#1209231',
+    credential_url: '',
+    image_url: '/certificates/IDB1.png',
     order_index: 2,
     created_at: '',
   },
   {
     id: '3',
-    title: 'AWS Certified Solutions Architect',
-    issuer: 'Amazon Web Services',
-    issue_date: '2022-01-10',
-    expiry_date: '2025-01-10',
-    credential_id: 'AWS-SAA-54321',
-    credential_url: 'https://aws.amazon.com/certification',
-    image_url: 'https://images.pexels.com/photos/669615/pexels-photo-669615.jpeg?auto=compress&cs=tinysrgb&w=400',
+    title: 'Enterprise System Analysis & Design With J2EE',
+    issuer: 'IDB-BISEW',
+    issue_date: '2018-04-09',
+    expiry_date: null,
+    credential_id: '#1209231',
+    credential_url: '',
+    image_url: '/certificates/IDB2.png',
     order_index: 3,
     created_at: '',
   },
   {
     id: '4',
-    title: 'MongoDB Certified Developer',
-    issuer: 'MongoDB Inc.',
-    issue_date: '2021-09-05',
+    title: 'Enterprise System Analysis & Design With J2EE',
+    issuer: 'DIIT (Daffodil Institute of IT).',
+    issue_date: '2017-10-04',
     expiry_date: null,
-    credential_id: 'MONGO-98765',
-    credential_url: 'https://university.mongodb.com/certification',
-    image_url: 'https://images.pexels.com/photos/270366/pexels-photo-270366.jpeg?auto=compress&cs=tinysrgb&w=400',
+    credential_id: '1000835',
+    credential_url: '',
+    image_url: '/certificates/DIIT.png',
     order_index: 4,
     created_at: '',
   },
   {
     id: '5',
-    title: 'Certified Kubernetes Administrator',
-    issuer: 'Cloud Native Computing Foundation',
-    issue_date: '2022-08-15',
-    expiry_date: '2025-08-15',
-    credential_id: 'CKA-13579',
-    credential_url: 'https://www.cncf.io/certification/cka/',
-    image_url: 'https://images.pexels.com/photos/1181271/pexels-photo-1181271.jpeg?auto=compress&cs=tinysrgb&w=400',
+    title: 'Web Application Development-PHP',
+    issuer: 'BASIS (BITM)',
+    issue_date: '2016-08-25',
+    expiry_date: null,
+    credential_id: '128052',
+    credential_url: '',
+    image_url: '/certificates/BITM.png',
     order_index: 5,
     created_at: '',
   },
-  {
-    id: '6',
-    title: 'Professional Scrum Master I',
-    issuer: 'Scrum.org',
-    issue_date: '2019-11-20',
-    expiry_date: null,
-    credential_id: 'PSM-24680',
-    credential_url: 'https://www.scrum.org/certificates',
-    image_url: 'https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=400',
-    order_index: 6,
-    created_at: '',
-  },
+  
 ];
 
 export default function Certifications() {
@@ -118,15 +107,12 @@ export default function Certifications() {
               key={cert.id}
               className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 group"
             >
-              <div className="relative h-48 overflow-hidden bg-gradient-to-br from-blue-500 to-blue-700">
+              <div className="relative overflow-hidden">
                 <img
                   src={cert.image_url}
                   alt={cert.title}
-                  className="w-full h-full object-cover opacity-80 group-hover:scale-110 transition-transform duration-300"
+                  className="w-full object-cover opacity-100 group-hover:scale-110 transition-transform duration-300"
                 />
-                <div className="absolute inset-0 bg-blue-900/40 flex items-center justify-center">
-                  <Award className="w-16 h-16 text-white opacity-90" />
-                </div>
               </div>
 
               <div className="p-6">
