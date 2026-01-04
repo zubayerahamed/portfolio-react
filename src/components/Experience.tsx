@@ -1,8 +1,21 @@
-import { useEffect, useState } from 'react';
 import { Briefcase, MapPin, Calendar } from 'lucide-react';
-import { supabase, type Experience } from '../lib/supabase';
 
-const defaultExperience = [
+type Experience = {
+  id: string;
+  company: string;
+  position: string;
+  description: string;
+  highlights: string[];
+  start_date: string;
+  end_date: string | null;
+  current: boolean;
+  location: string;
+  technologies: string[];
+  order_index: number;
+  created_at: string;
+};
+
+const experience: Experience[] = [
   {
     id: '1',
     company: 'Metatude Asia Ltd',
@@ -102,30 +115,6 @@ const defaultExperience = [
 ];
 
 export default function Experience() {
-  const [experience, setExperience] = useState<Experience[]>([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    fetchExperience();
-  }, []);
-
-  const fetchExperience = async () => {
-    const { data, error } = await supabase
-      .from('experience')
-      .select('*')
-      .order('order_index', { ascending: true });
-
-    if (error) {
-      console.error('Error fetching experience:', error);
-      setExperience(defaultExperience);
-    } else if (data && data.length > 0) {
-      setExperience(data);
-    } else {
-      setExperience(defaultExperience);
-    }
-    setLoading(false);
-  };
-
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
     return date.toLocaleDateString('en-US', { year: 'numeric', month: 'short' });
@@ -154,23 +143,6 @@ export default function Experience() {
   };
 
   const totalExp = calculateTotalExperience();
-
-  if (loading) {
-    return (
-      <section id="experience" className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="animate-pulse">
-            <div className="h-8 bg-gray-200 rounded w-48 mx-auto mb-12"></div>
-            <div className="space-y-8">
-              {[1, 2, 3].map((i) => (
-                <div key={i} className="h-64 bg-gray-200 rounded-xl"></div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-    );
-  }
 
   return (
     <section id="experience" className="py-20 bg-white">
@@ -201,7 +173,7 @@ export default function Experience() {
             <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-blue-200"></div>
 
             <div className="space-y-12">
-              {experience.map((exp, index) => (
+              {experience.map((exp) => (
                 <div key={exp.id} className="relative pl-20">
                   <div className="absolute left-0 top-0 w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center shadow-lg">
                     <Briefcase className="w-8 h-8 text-white" />
@@ -216,7 +188,6 @@ export default function Experience() {
                         <p className="text-xl text-blue-600 font-semibold mb-2">
                           {exp.company}
                         </p>
-                        
                       </div>
                       {exp.current && (
                         <span className="px-4 py-2 bg-green-100 text-green-800 rounded-full text-sm font-semibold">

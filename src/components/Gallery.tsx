@@ -1,8 +1,18 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Calendar, X } from 'lucide-react';
-import { supabase, type GalleryItem } from '../lib/supabase';
 
-const defaultGallery = [
+type GalleryItem = {
+  id: string;
+  title: string;
+  description: string;
+  image_url: string;
+  event_date: string;
+  category: string;
+  order_index: number;
+  created_at: string;
+};
+
+const gallery: GalleryItem[] = [
   {
     id: '1',
     title: 'Tech Conference 2023',
@@ -86,31 +96,8 @@ const defaultGallery = [
 ];
 
 export default function Gallery() {
-  const [gallery, setGallery] = useState<GalleryItem[]>([]);
-  const [loading, setLoading] = useState(true);
   const [selectedImage, setSelectedImage] = useState<GalleryItem | null>(null);
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
-
-  useEffect(() => {
-    fetchGallery();
-  }, []);
-
-  const fetchGallery = async () => {
-    const { data, error } = await supabase
-      .from('gallery')
-      .select('*')
-      .order('order_index', { ascending: true });
-
-    if (error) {
-      console.error('Error fetching gallery:', error);
-      setGallery(defaultGallery);
-    } else if (data && data.length > 0) {
-      setGallery(data);
-    } else {
-      setGallery(defaultGallery);
-    }
-    setLoading(false);
-  };
 
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
@@ -121,23 +108,6 @@ export default function Gallery() {
   const filteredGallery = selectedCategory === 'All'
     ? gallery
     : gallery.filter(item => item.category === selectedCategory);
-
-  if (loading) {
-    return (
-      <section id="gallery" className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="animate-pulse">
-            <div className="h-8 bg-gray-200 rounded w-48 mx-auto mb-12"></div>
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {[1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
-                <div key={i} className="h-64 bg-gray-200 rounded-xl"></div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-    );
-  }
 
   return (
     <section id="gallery" className="py-20 bg-white">

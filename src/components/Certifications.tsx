@@ -1,8 +1,19 @@
-import { useEffect, useState } from 'react';
 import { Award, ExternalLink, Calendar } from 'lucide-react';
-import { supabase, type Certification } from '../lib/supabase';
 
-const defaultCertifications = [
+type Certification = {
+  id: string;
+  title: string;
+  issuer: string;
+  issue_date: string;
+  expiry_date: string | null;
+  credential_id: string;
+  credential_url: string;
+  image_url: string;
+  order_index: number;
+  created_at: string;
+};
+
+const certifications: Certification[] = [
   {
     id: '1',
     title: 'Oracle Certified Professional, Java SE Developer',
@@ -78,30 +89,6 @@ const defaultCertifications = [
 ];
 
 export default function Certifications() {
-  const [certifications, setCertifications] = useState<Certification[]>([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    fetchCertifications();
-  }, []);
-
-  const fetchCertifications = async () => {
-    const { data, error } = await supabase
-      .from('certifications')
-      .select('*')
-      .order('order_index', { ascending: true });
-
-    if (error) {
-      console.error('Error fetching certifications:', error);
-      setCertifications(defaultCertifications);
-    } else if (data && data.length > 0) {
-      setCertifications(data);
-    } else {
-      setCertifications(defaultCertifications);
-    }
-    setLoading(false);
-  };
-
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
     return date.toLocaleDateString('en-US', { year: 'numeric', month: 'long' });
@@ -111,23 +98,6 @@ export default function Certifications() {
     if (!expiryDate) return false;
     return new Date(expiryDate) < new Date();
   };
-
-  if (loading) {
-    return (
-      <section id="certifications" className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="animate-pulse">
-            <div className="h-8 bg-gray-200 rounded w-48 mx-auto mb-12"></div>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {[1, 2, 3, 4, 5, 6].map((i) => (
-                <div key={i} className="h-80 bg-gray-200 rounded-xl"></div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-    );
-  }
 
   return (
     <section id="certifications" className="py-20 bg-gray-50">

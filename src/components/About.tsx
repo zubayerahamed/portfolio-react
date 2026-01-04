@@ -1,60 +1,16 @@
-import { useEffect, useState } from 'react';
-import { MapPin, Mail, Phone, Github, Linkedin, Twitter } from 'lucide-react';
-import { supabase, type Profile } from '../lib/supabase';
+import { Mail, Phone, Github, Linkedin } from 'lucide-react';
+
+const profile = {
+  name: 'Zubayer Ahamed',
+  title: 'Full-Stack Software Developer',
+  email: 'zubayerahamed1990@gmail.com',
+  phone: '+880 1748562164',
+  location: 'Dhaka, Bangladesh',
+  github_url: 'https://github.com/zubayerahamed',
+  linkedin_url: 'https://linkedin.com/in/zubayerahamed',
+};
 
 export default function About() {
-  const [profile, setProfile] = useState<Profile | null>(null);
-
-  useEffect(() => {
-    fetchProfile();
-  }, []);
-
-  const fetchProfile = async () => {
-    const { data, error } = await supabase
-      .from('profile')
-      .select('*')
-      .maybeSingle();
-
-    if (error) {
-      console.error('Error fetching profile:', error);
-      return;
-    }
-
-    if (data) {
-      setProfile(data);
-    } else {
-      setProfile({
-        id: '',
-        name: 'Zubayer Ahamed',
-        title: 'Full-Stack Software Developer',
-        bio: '<b>Full-Stack Software Engineer with deep mastery of the Java ecosystem and Spring Boot, delivering high-performance, scalable enterprise systems</b>. I architect clean, resilient backend services, design secure and efficient REST APIs, and optimize databases for robust real-world workloads. While backend engineering is my core strength, I also work across modern frontend stacks to deliver cohesive, end-to-end solutions. I value clean code, strong engineering discipline, and system designs that scale long after delivery. I’m committed to elevating team performance through mentorship, knowledge sharing, and staying ahead of emerging technologies that drive competitive advantage.',
-        email: 'zubayerahamed1990@gmail.com',
-        phone: '+880 1748562164',
-        location: 'Dhaka, Bangladesh',
-        github_url: 'https://github.com/zubayerahamed',
-        linkedin_url: 'https://linkedin.com/in/zubayerahamed',
-        resume_url: '/resume.pdf',
-        created_at: '',
-        updated_at: '',
-      });
-    }
-  };
-
-  if (!profile) {
-    return (
-      <section id="about" className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="animate-pulse">
-            <div className="h-8 bg-gray-200 rounded w-48 mx-auto mb-12"></div>
-            <div className="space-y-4">
-              <div className="h-4 bg-gray-200 rounded w-3/4 mx-auto"></div>
-              <div className="h-4 bg-gray-200 rounded w-2/3 mx-auto"></div>
-            </div>
-          </div>
-        </div>
-      </section>
-    );
-  }
 
   return (
     <section id="about" className="py-20 bg-white">

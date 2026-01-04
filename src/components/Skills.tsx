@@ -1,7 +1,15 @@
-import { useEffect, useState } from 'react';
-import { supabase, type Skill } from '../lib/supabase';
+import { useState } from 'react';
 
-const defaultSkills = [
+type Skill = {
+  id: string;
+  name: string;
+  category: string;
+  proficiency: number;
+  order_index: number;
+  created_at: string;
+};
+
+const skills: Skill[] = [
   { id: '1', name: 'Java', category: 'Backend', proficiency: 95, order_index: 1, created_at: '' },
   { id: '2', name: 'Spring Boot', category: 'Backend', proficiency: 95, order_index: 2, created_at: '' },
   { id: '3', name: 'Spring MVC', category: 'Backend', proficiency: 90, order_index: 3, created_at: '' },
@@ -25,30 +33,7 @@ const defaultSkills = [
 ];
 
 export default function Skills() {
-  const [skills, setSkills] = useState<Skill[]>([]);
-  const [loading, setLoading] = useState(true);
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
-
-  useEffect(() => {
-    fetchSkills();
-  }, []);
-
-  const fetchSkills = async () => {
-    const { data, error } = await supabase
-      .from('skills')
-      .select('*')
-      .order('order_index', { ascending: true });
-
-    if (error) {
-      console.error('Error fetching skills:', error);
-      setSkills(defaultSkills);
-    } else if (data && data.length > 0) {
-      setSkills(data);
-    } else {
-      setSkills(defaultSkills);
-    }
-    setLoading(false);
-  };
 
   const categories = ['All', ...Array.from(new Set(skills.map(skill => skill.category)))];
   const filteredSkills = selectedCategory === 'All'
@@ -62,23 +47,6 @@ export default function Skills() {
     acc[skill.category].push(skill);
     return acc;
   }, {} as Record<string, Skill[]>);
-
-  if (loading) {
-    return (
-      <section id="skills" className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="animate-pulse">
-            <div className="h-8 bg-gray-200 rounded w-48 mx-auto mb-12"></div>
-            <div className="space-y-4">
-              {[1, 2, 3].map((i) => (
-                <div key={i} className="h-12 bg-gray-200 rounded"></div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-    );
-  }
 
   return (
     <section id="skills" className="py-20 bg-white">

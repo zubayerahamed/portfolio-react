@@ -1,23 +1,30 @@
-import { useEffect, useState } from 'react';
 import { Code2, Cable, Cloud, Wrench, Users, Zap, Workflow, CloudCog, Rocket, RefreshCcwDot, Lightbulb, GraduationCap } from 'lucide-react';
-import { supabase, type Service } from '../lib/supabase';
+
+type Service = {
+  id: string;
+  title: string;
+  description: string;
+  icon: string;
+  order_index: number;
+  created_at: string;
+};
 
 const iconMap: { [key: string]: typeof Code2 } = {
   Code2,
   Cable,
   Cloud,
   Wrench,
-  Users, 
+  Users,
   Zap,
   Workflow,
   CloudCog,
   Rocket,
   RefreshCcwDot,
-  Lightbulb, 
+  Lightbulb,
   GraduationCap
 };
 
-const defaultServices = [
+const services: Service[] = [
   {
     id: '1',
     title: 'Custom Enterprise Application Development',
@@ -93,47 +100,6 @@ const defaultServices = [
 ];
 
 export default function Services() {
-  const [services, setServices] = useState<Service[]>([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    fetchServices();
-  }, []);
-
-  const fetchServices = async () => {
-    const { data, error } = await supabase
-      .from('services')
-      .select('*')
-      .order('order_index', { ascending: true });
-
-    if (error) {
-      console.error('Error fetching services:', error);
-      setServices(defaultServices);
-    } else if (data && data.length > 0) {
-      setServices(data);
-    } else {
-      setServices(defaultServices);
-    }
-    setLoading(false);
-  };
-
-  if (loading) {
-    return (
-      <section id="services" className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="animate-pulse">
-            <div className="h-8 bg-gray-200 rounded w-48 mx-auto mb-12"></div>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((i) => (
-                <div key={i} className="h-64 bg-gray-200 rounded-xl"></div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-    );
-  }
-
   return (
     <section id="services" className="py-20 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
