@@ -1,4 +1,4 @@
-import { Mail, Phone, Github, Linkedin } from 'lucide-react';
+import { Github, Linkedin } from 'lucide-react';
 
 const profile = {
   name: 'Zubayer Ahamed',
@@ -24,18 +24,17 @@ export default function About() {
 
         <div className="grid md:grid-cols-2 gap-12 items-start">
           <div>
-            <p className="text-md text-justify text-gray-700 leading-relaxed mb-3">
+            <p className="text-lg text-justify text-gray-700 leading-relaxed mb-3">
               <b>Full-Stack Software Engineer with deep mastery of the Java ecosystem and Spring Boot, delivering high-performance, scalable enterprise systems.</b> I architect clean, resilient backend services, design secure and efficient REST APIs, and optimize databases for robust real-world workloads.
             </p>
-            <p className="text-md text-justify text-gray-700 leading-relaxed mb-3">
+            <p className="text-lg text-justify text-gray-700 leading-relaxed mb-3">
               While backend engineering is my core strength, I also work across modern frontend stacks to deliver cohesive, end-to-end solutions. I value clean code, strong engineering discipline, and system designs that scale long after delivery.
             </p>
-            <p className="text-md text-justify text-gray-700 leading-relaxed mb-6">
+            <p className="text-lg text-justify text-gray-700 leading-relaxed mb-6">
               I’m committed to elevating team performance through mentorship, knowledge sharing, and staying ahead of emerging technologies that drive competitive advantage.
             </p>
 
-            <div className="space-y-4">
-
+            {/* <div className="space-y-4">
               <div className="flex items-center gap-3 text-gray-700">
                 <Mail className="w-5 h-5 text-blue-600 flex-shrink-0" />
                 <a href={`mailto:${profile.email}`} className="hover:text-blue-600 transition-colors">
@@ -49,7 +48,7 @@ export default function About() {
                   {profile.phone}
                 </a>
               </div>
-            </div>
+            </div> */}
 
             <div className="flex gap-4 mt-8 text-center">
               {profile.github_url && (
@@ -76,23 +75,31 @@ export default function About() {
           </div>
 
           <div className="bg-gradient-to-br from-blue-50 to-gray-50 p-8 rounded-2xl shadow-lg">
-            <h3 className="text-2xl font-bold text-gray-900 mb-6">Quick Facts</h3>
+            <h3 className="text-2xl font-bold text-gray-900 text-center mb-6">Quick Facts</h3>
             <div className="space-y-4">
-              <div className="flex justify-between items-center py-3 border-b border-gray-200">
+              <div className="flex justify-between items-center py-2 border-b border-gray-200">
                 <span className="font-semibold text-gray-700">Name</span>
                 <span className="text-gray-900">{profile.name}</span>
               </div>
-              <div className="flex justify-between items-center py-3 border-b border-gray-200">
+              <div className="flex justify-between items-center py-2 border-b border-gray-200">
                 <span className="font-semibold text-gray-700">Role</span>
                 <span className="text-gray-900">{profile.title}</span>
               </div>
-              <div className="flex justify-between items-center py-3 border-b border-gray-200">
+              <div className="flex justify-between items-center py-2 border-b border-gray-200">
                 <span className="font-semibold text-gray-700">Specialty</span>
                 <span className="text-gray-900">Java & Spring Boot</span>
               </div>
-              <div className="flex justify-between items-center py-3">
+              <div className="flex justify-between items-center py-2 border-b border-gray-200">
                 <span className="font-semibold text-gray-700">Location</span>
                 <span className="text-gray-900">{profile.location}</span>
+              </div>
+              <div className="flex justify-between items-center py-2 border-b border-gray-200">
+                <span className="font-semibold text-gray-700">Email</span>
+                <span className="text-gray-900">{profile.email}</span>
+              </div>
+              <div className="flex justify-between items-center py-2">
+                <span className="font-semibold text-gray-700">Mobile</span>
+                <span className="text-gray-900">{profile.phone}</span>
               </div>
             </div>
           </div>

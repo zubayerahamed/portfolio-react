@@ -15,29 +15,29 @@ type GalleryItem = {
 const gallery: GalleryItem[] = [
   {
     id: '1',
-    title: 'Tech Conference 2023',
-    description: 'Speaking at the annual Java developers conference about microservices architecture',
-    image_url: 'https://images.pexels.com/photos/2774556/pexels-photo-2774556.jpeg?auto=compress&cs=tinysrgb&w=800',
-    event_date: '2023-11-15',
-    category: 'Conference',
+    title: 'Meetup Event',
+    description: 'Met with our CEO and Clients to discuss project updates and future plans',
+    image_url: '/events/1.jpg',
+    event_date: '2024-05-15',
+    category: 'Meetup',
     order_index: 1,
     created_at: '',
   },
   {
     id: '2',
-    title: 'Team Building Event',
-    description: 'Annual team building activities with the development team',
-    image_url: 'https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=800',
+    title: 'Day Outing Event',
+    description: 'A memorable day outing with team members to enhance bonding and collaboration',
+    image_url: '/events/2.jpg',
     event_date: '2023-09-20',
-    category: 'Team Event',
+    category: 'Day Outing',
     order_index: 2,
     created_at: '',
   },
   {
     id: '3',
-    title: 'Hackathon Winner',
-    description: 'Won first place at the Spring Boot hackathon with an innovative solution',
-    image_url: 'https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=800',
+    title: 'Buffet Event',
+    description: 'A delightful buffet event with a variety of cuisines to celebrate team achievements',
+    image_url: '/events/3.jpg',
     event_date: '2023-07-10',
     category: 'Achievement',
     order_index: 3,
@@ -46,8 +46,8 @@ const gallery: GalleryItem[] = [
   {
     id: '4',
     title: 'Workshop on Clean Code',
-    description: 'Conducting workshop on clean code principles and best practices',
-    image_url: 'https://images.pexels.com/photos/3184338/pexels-photo-3184338.jpeg?auto=compress&cs=tinysrgb&w=800',
+    description: 'Participated in an intensive workshop focused on writing clean and maintainable code',
+    image_url: '/events/4.jpeg',
     event_date: '2023-05-25',
     category: 'Workshop',
     order_index: 4,
@@ -56,40 +56,40 @@ const gallery: GalleryItem[] = [
   {
     id: '5',
     title: 'Product Launch',
-    description: 'Successful launch of enterprise ERP system to major client',
-    image_url: 'https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&cs=tinysrgb&w=800',
+    description: 'Launching a new product that revolutionizes user experience in web applications',
+    image_url: '/events/5.jpg',
     event_date: '2023-03-12',
-    category: 'Milestone',
+    category: 'Achievement',
     order_index: 5,
     created_at: '',
   },
   {
     id: '6',
-    title: 'Meetup: Spring Framework',
-    description: 'Organizing and speaking at local Spring Framework meetup',
-    image_url: 'https://images.pexels.com/photos/1181396/pexels-photo-1181396.jpeg?auto=compress&cs=tinysrgb&w=800',
+    title: 'Certification Achievement',
+    description: 'Achieved Oracle Certified Professional, Java SE 6 Programmer certification',
+    image_url: '/events/6.jpg',
     event_date: '2023-02-08',
-    category: 'Meetup',
+    category: 'Achievement',
     order_index: 6,
     created_at: '',
   },
   {
     id: '7',
-    title: 'Certification Achievement',
-    description: 'Receiving AWS Solutions Architect certification',
-    image_url: 'https://images.pexels.com/photos/5940831/pexels-photo-5940831.jpeg?auto=compress&cs=tinysrgb&w=800',
+    title: 'Iftar Party',
+    description: 'Celebrating the spirit of Ramadan with an Iftar party among colleagues and friends',
+    image_url: '/events/7.jpeg',
     event_date: '2022-12-15',
-    category: 'Achievement',
+    category: 'Meetup',
     order_index: 7,
     created_at: '',
   },
   {
     id: '8',
-    title: 'Open Source Contribution',
-    description: 'Contributing to Spring Boot open source project',
-    image_url: 'https://images.pexels.com/photos/546819/pexels-photo-546819.jpeg?auto=compress&cs=tinysrgb&w=800',
+    title: 'Training Session',
+    description: 'Conduct a hands-on training session on the Power Distribution Board Prepaid Metering System.',
+    image_url: '/events/8.jpeg',
     event_date: '2022-10-22',
-    category: 'Open Source',
+    category: 'Workshop',
     order_index: 8,
     created_at: '',
   },
@@ -156,11 +156,15 @@ export default function Gallery() {
                 <span className="text-xs bg-blue-600 text-white px-2 py-1 rounded-full w-fit mb-2">
                   {item.category}
                 </span>
-                <h3 className="text-white font-bold text-lg mb-1">{item.title}</h3>
-                <p className="text-white/90 text-sm flex items-center gap-1">
-                  <Calendar className="w-3 h-3" />
-                  {formatDate(item.event_date)}
-                </p>
+                {item.title != '' && (
+                  <h3 className="text-white font-bold text-lg mb-1">{item.title}</h3>
+                )}
+                {item.event_date != '' && (
+                  <p className="text-white/90 text-sm flex items-center gap-1">
+                    <Calendar className="w-3 h-3" />
+                    {formatDate(item.event_date)}
+                  </p>
+                )}
               </div>
             </div>
           ))}
@@ -187,7 +191,7 @@ export default function Gallery() {
               <img
                 src={selectedImage.image_url}
                 alt={selectedImage.title}
-                className="w-full max-h-96 object-cover"
+                className="w-full h-full object-cover"
               />
               <div className="p-6">
                 <span className="text-xs bg-blue-600 text-white px-3 py-1 rounded-full">

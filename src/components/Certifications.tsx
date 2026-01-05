@@ -1,4 +1,4 @@
-import { Award, ExternalLink, Calendar } from 'lucide-react';
+import { ExternalLink, Calendar } from 'lucide-react';
 
 type Certification = {
   id: string;
@@ -28,7 +28,7 @@ const certifications: Certification[] = [
   },
   {
     id: '2',
-    title: 'Certificate for Best Performance',
+    title: 'Certificate for Best Performance in Java Programming',
     issuer: 'IDB-BISEW',
     issue_date: '2018-04-22',
     expiry_date: null,
@@ -64,7 +64,7 @@ const certifications: Certification[] = [
   },
   {
     id: '5',
-    title: 'Web Application Development-PHP',
+    title: 'Web Application Development With PHP & MySQL',
     issuer: 'BASIS (BITM)',
     issue_date: '2016-08-25',
     expiry_date: null,
@@ -81,11 +81,6 @@ export default function Certifications() {
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
     return date.toLocaleDateString('en-US', { year: 'numeric', month: 'long' });
-  };
-
-  const isExpired = (expiryDate: string | null) => {
-    if (!expiryDate) return false;
-    return new Date(expiryDate) < new Date();
   };
 
   return (
@@ -126,19 +121,6 @@ export default function Certifications() {
                     <Calendar className="w-4 h-4" />
                     <span>Issued: {formatDate(cert.issue_date)}</span>
                   </div>
-                  {cert.expiry_date && (
-                    <div className="flex items-center gap-2">
-                      <Calendar className="w-4 h-4" />
-                      <span className={isExpired(cert.expiry_date) ? 'text-red-600' : ''}>
-                        Expires: {formatDate(cert.expiry_date)}
-                      </span>
-                    </div>
-                  )}
-                  {!cert.expiry_date && (
-                    <div className="flex items-center gap-2">
-                      <span className="text-green-600 font-medium">No Expiration</span>
-                    </div>
-                  )}
                 </div>
 
                 <div className="text-sm text-gray-500 mb-4 font-mono">
