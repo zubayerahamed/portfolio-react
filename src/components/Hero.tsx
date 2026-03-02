@@ -1,13 +1,20 @@
-import { ArrowDown, Download } from 'lucide-react';
+import { ArrowDown, Download } from "lucide-react";
 
 export default function Hero() {
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center pt-16">
+    <section
+      id="home"
+      className="min-h-screen flex items-center justify-center pt-16"
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         <div className="text-center">
           <div className="mb-1">
             <div className="w-80 mx-auto overflow-hidden">
-              <img src="/zubayer_ahamed.png" alt="Zubayer Ahamed" className="w-full h-auto" />
+              <img
+                src="/zubayer_ahamed.png"
+                alt="Zubayer Ahamed"
+                className="w-full h-auto"
+              />
             </div>
           </div>
 
@@ -20,7 +27,9 @@ export default function Hero() {
           </p>
 
           <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
-            Backend engineering expert leveraging Java and Spring Boot to deliver scalable architectures, clean APIs, and enterprise-grade solutions
+            Backend engineering expert leveraging Java and Spring Boot to
+            deliver scalable architectures, clean APIs, and enterprise-grade
+            solutions
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
@@ -36,18 +45,21 @@ export default function Hero() {
             >
               View Projects
             </a>
-            <a
+            {/* <a
               href="/resume.pdf"
               download
               className="px-8 py-4 bg-gray-900 text-white rounded-lg font-semibold hover:bg-gray-800 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 flex items-center gap-2"
             >
               <Download className="w-5 h-5" />
               Resume
-            </a>
+            </a> */}
           </div>
 
           <div className="animate-bounce">
-            <a href="#about" className="inline-block text-gray-600 hover:text-blue-600 transition-colors duration-200">
+            <a
+              href="#about"
+              className="inline-block text-gray-600 hover:text-blue-600 transition-colors duration-200"
+            >
               <ArrowDown className="w-8 h-8" />
             </a>
           </div>
