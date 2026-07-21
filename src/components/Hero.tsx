@@ -1,4 +1,4 @@
-import { ArrowDown, Download } from "lucide-react";
+import { ArrowDown } from "lucide-react";
 
 export default function Hero() {
   return (
@@ -27,9 +27,7 @@ export default function Hero() {
           </p>
 
           <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
-            Backend engineering expert leveraging Java and Spring Boot to
-            deliver scalable architectures, clean APIs, and enterprise-grade
-            solutions
+            Full-Stack & Mobile Application Engineer specializing in Java, Spring Boot, Laravel, Angular, and Ionic. I build scalable backend architectures, enterprise-grade web applications, robust REST APIs, and cross-platform mobile solutions that are secure, maintainable, and built for growth.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">

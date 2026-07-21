@@ -25,13 +25,16 @@ export default function About() {
         <div className="grid md:grid-cols-2 gap-12 items-start">
           <div>
             <p className="text-lg text-justify text-gray-700 leading-relaxed mb-3">
-              <b>Full-Stack Software Engineer with deep mastery of the Java ecosystem and Spring Boot, delivering high-performance, scalable enterprise systems.</b> I architect clean, resilient backend services, design secure and efficient REST APIs, and optimize databases for robust real-world workloads.
+              <b>Full-Stack Software Engineer</b> with deep expertise in <b>Java, Spring Boot, Laravel, Angular, and Ionic</b>, specializing in building scalable, high-performance enterprise applications for web, desktop, and mobile platforms.
             </p>
             <p className="text-lg text-justify text-gray-700 leading-relaxed mb-3">
-              While backend engineering is my core strength, I also work across modern frontend stacks to deliver cohesive, end-to-end solutions. I value clean code, strong engineering discipline, and system designs that scale long after delivery.
+              My core strength lies in backend engineering, where I architect resilient microservices and monolithic systems, design secure and efficient REST APIs, optimize relational databases, and build maintainable software capable of handling real-world business workloads. I have extensive experience developing ERP systems, POS solutions, inventory management, accounting platforms, and SaaS applications with offline-first synchronization architectures.
             </p>
             <p className="text-lg text-justify text-gray-700 leading-relaxed mb-6">
-              I’m committed to elevating team performance through mentorship, knowledge sharing, and staying ahead of emerging technologies that drive competitive advantage.
+              Beyond backend development, I build modern, responsive web applications with Angular and cross-platform mobile applications with Ionic, delivering seamless end-to-end solutions from architecture to deployment. I emphasize clean architecture, maintainable code, performance, security, and long-term scalability.
+            </p>
+            <p className="text-lg text-justify text-gray-700 leading-relaxed mb-6">
+              I continuously invest in expanding my expertise in cloud technologies, distributed systems, and modern software architecture while mentoring teammates, sharing knowledge, and adopting engineering best practices that enable teams to deliver reliable, production-ready software.
             </p>
 
             {/* <div className="space-y-4">
@@ -77,27 +80,27 @@ export default function About() {
           <div className="bg-gradient-to-br from-blue-50 to-gray-50 p-8 rounded-2xl shadow-lg">
             <h3 className="text-2xl font-bold text-gray-900 text-center mb-6">Quick Facts</h3>
             <div className="space-y-4">
-              <div className="flex justify-between items-center py-2 border-b border-gray-200">
+              <div className="flex justify-between items-center py-5 border-b border-gray-200">
                 <span className="font-semibold text-gray-700">Name</span>
                 <span className="text-gray-900">{profile.name}</span>
               </div>
-              <div className="flex justify-between items-center py-2 border-b border-gray-200">
+              <div className="flex justify-between items-center py-5 border-b border-gray-200">
                 <span className="font-semibold text-gray-700">Role</span>
                 <span className="text-gray-900">{profile.title}</span>
               </div>
-              <div className="flex justify-between items-center py-2 border-b border-gray-200">
+              <div className="flex justify-between items-center py-5 border-b border-gray-200">
                 <span className="font-semibold text-gray-700">Specialty</span>
                 <span className="text-gray-900">Java & Spring Boot</span>
               </div>
-              <div className="flex justify-between items-center py-2 border-b border-gray-200">
+              <div className="flex justify-between items-center py-5 border-b border-gray-200">
                 <span className="font-semibold text-gray-700">Location</span>
                 <span className="text-gray-900">{profile.location}</span>
               </div>
-              <div className="flex justify-between items-center py-2 border-b border-gray-200">
+              <div className="flex justify-between items-center py-5 border-b border-gray-200">
                 <span className="font-semibold text-gray-700">Email</span>
                 <span className="text-gray-900">{profile.email}</span>
               </div>
-              <div className="flex justify-between items-center py-2">
+              <div className="flex justify-between items-center py-5">
                 <span className="font-semibold text-gray-700">Mobile</span>
                 <span className="text-gray-900">{profile.phone}</span>
               </div>
